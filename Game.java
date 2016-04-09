@@ -34,23 +34,23 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room puerta, gondor, monte, ojo, atalaya;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        puerta = new Room("Estas en la puerta negra");
+        gondor = new Room("Has llegado  a MInas Tirith, estas a salvo");
+        monte = new Room("Estas cerca del monte del destino");
+        ojo = new Room("Estas cerca de la Torre Oscura, cuidado con el ojo que todo lo  ve");
+        atalaya = new Room("Estas en la atalaya de los orcos");
         
         // initialise room exits
-        outside.setExits(null, theater, lab, pub);
-        theater.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+       puerta.setExits(null, gondor,  ojo, monte);
+        gondor.setExits(null, null, null, puerta);
+        monte.setExits(null, puerta, null, null);
+        ojo.setExits(puerta, atalaya, null, null);
+        atalaya.setExits(null, null, null,  ojo);
 
-        currentRoom = outside;  // start game outside
+        currentRoom = puerta;  // start game outside
     }
 
     /**
