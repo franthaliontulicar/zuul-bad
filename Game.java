@@ -19,7 +19,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+
     /**
      * Create the game and initialise its internal map.
      */
@@ -35,16 +35,16 @@ public class Game
     private void createRooms()
     {
         Room puerta, gondor, monte, ojo, atalaya;
-      
+
         // create the rooms
         puerta = new Room("Estas en la puerta negra");
         gondor = new Room("Has llegado  a MInas Tirith, estas a salvo");
         monte = new Room("Estas cerca del monte del destino");
-        ojo = new Room("Estas cerca de la Torre Oscura, cuidado con el ojo que todo lo  ve");
-        atalaya = new Room("Estas en la atalaya de los orcos");
-        
+        ojo = new Room("Estas cerca de Barad thur, cuidado con el ojo que todo lo  ve");
+        atalaya = new Room("Estas en la atalaya de los orcos, precaucion");
+
         // initialise room exits
-       puerta.setExits(null, gondor,  ojo, monte);
+        puerta.setExits(null, gondor,  ojo, monte);
         gondor.setExits(null, null, null, puerta);
         monte.setExits(null, puerta, null, null);
         ojo.setExits(puerta, atalaya, null, null);
@@ -62,7 +62,7 @@ public class Game
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-                
+
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -136,7 +136,7 @@ public class Game
     private void printHelp() 
     {
         System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("Estas perdido  en Mordor.");
         System.out.println();
         System.out.println("Your command words are:");
         System.out.println("   go quit help");
@@ -160,24 +160,48 @@ public class Game
         Room nextRoom = null;
         if(direction.equals("north")) {
             nextRoom = currentRoom.northExit;
+            System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
+            if(direction.equals("north")) {
+                System.out.println("Te rodean los orcos, oyes un sonido estridente, miras al cielo....Nazgul!");
+                System.out.println("GAME OVER!");
+            }
         }
         if(direction.equals("east")) {
             nextRoom = currentRoom.eastExit;
+            System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
+            if(direction.equals("east")) {
+                System.out.println("Miras al cielo, ves una enorme figura alada, te asustas pensando en los Nazgul, pero te fijas bien....Aguilas?");
+                System.out.println("Enorabuena, has conseguido salir, estas en GONDOR!!!");
+            }
+
         }
         if(direction.equals("south")) {
             nextRoom = currentRoom.southExit;
+            System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
+            if(direction.equals("south")) {
+                System.out.println("Te rodean los orcos, oyes un sonido estridente, miras al cielo....Nazgul!");
+                System.out.println("GAME OVER!");
+            }
         }
         if(direction.equals("west")) {
             nextRoom = currentRoom.westExit;
+            System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
+            if(direction.equals("west")) {
+                System.out.println("Te rodean los orcos, oyes un sonido estridente, miras al cielo....Nazgul!");
+                System.out.println("GAME OVER!");
+            }
         }
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado! Muevete!!");
         }
         else {
             currentRoom = nextRoom;
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
+
+            System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
+
             if(currentRoom.northExit != null) {
                 System.out.print("north ");
             }
