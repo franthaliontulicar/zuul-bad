@@ -1,3 +1,4 @@
+import java.util.HashMap;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -21,6 +22,7 @@ public class Room
     public Room westExit;
     public Room surEastExit;
     public Room northWestExit;
+    public HashMap<String, Room> salidas; 
 
     /**
      * Create a room described "description". Initially, it has
@@ -31,6 +33,7 @@ public class Room
     public Room(String description) 
     {
         this.description = description;
+        salidas = new HashMap<>();
     }
 
     /**
