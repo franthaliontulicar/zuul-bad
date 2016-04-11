@@ -223,6 +223,10 @@ public class Game
         if(currentRoom.westExit != null) {
             System.out.print("west ");
         }
+        
+         if(currentRoom.surEastExit != null) {
+            System.out.print("surEast ");
+        }
 
     }
 
