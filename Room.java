@@ -48,16 +48,22 @@ public class Room
     {
         if(north != null)
             northExit = north;
+            salidas.put("north",north);
         if(east != null)
             eastExit = east;
+            salidas.put("east", east);
         if(south != null)
             southExit = south;
+            salidas.put("south", south);
         if(west != null)
             westExit = west;
+            salidas.put("west", west);
         if(surEast != null)
-            surEastExit = surEast;   
+            surEastExit = surEast; 
+            salidas.put("surEast", surEast);
         if(northWest != null)
-            northWestExit = northWest;      
+            northWestExit = northWest;
+            salidas.put("northWest", northWest);
     }
 
     /**
@@ -72,22 +78,22 @@ public class Room
         Room siguienteArea = null; 
 
         if(direccion.equals("north")){
-            siguienteArea = northExit ;
+            siguienteArea = salidas.get("north") ;
         }
         if(direccion.equals("east")){
-            siguienteArea = eastExit ;
+            siguienteArea = salidas.get("east") ;
         }
         if(direccion.equals("south")){
-            siguienteArea = southExit ;
+           siguienteArea = salidas.get("south") ;
         }
         if(direccion.equals("west")){
-            siguienteArea = westExit ;
+           siguienteArea = salidas.get("west") ;
         }
         if(direccion.equals("surEast")){
-            siguienteArea = surEastExit ;
+            siguienteArea = salidas.get("surEast") ;
         }
         if(direccion.equals("northWest")){
-            siguienteArea = northWestExit ;
+           siguienteArea = salidas.get("northWest") ;
         }
         return siguienteArea;
 
@@ -101,22 +107,22 @@ public class Room
      */
     public String getExitString(){
         String salida = null;
-        if(northExit != null){ 
+        if(salidas.get("north") != null){ 
             salida = "north" ;
         }
-        if(eastExit != null){
+        if(salidas.get("east") != null){
             salida = "east" ;
         }
-        if(southExit != null){
+        if(salidas.get("south") != null){
             salida = "south" ;
         }
-        if( westExit != null){
+        if(salidas.get("west") != null){
             salida = "west" ;
         }
-        if(surEastExit != null){
+        if(salidas.get("surEast") != null){
            salida = "surEast" ;
         }
-        if(northWestExit != null){
+        if(salidas.get("northWest") != null){
            salida = "northWest" ;
         }
         
