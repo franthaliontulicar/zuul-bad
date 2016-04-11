@@ -50,7 +50,7 @@ public class Game
         ojo.setExits(puerta, atalaya, null, null, null);
         atalaya.setExits(null, null, null,  ojo, null);
 
-        currentRoom = puerta;  // start game outside
+        currentRoom = monte;  // start game outside
     }
 
     /**
@@ -157,8 +157,8 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        Room nextRoom = null;
-        if(direction.equals("north")) {
+        Room nextRoom = currentRoom.getExit(direction);
+        /**if(direction.equals("north")) {
             nextRoom = currentRoom.northExit;
             System.out.println("Estas en el monte del destinoa");
             System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
@@ -195,7 +195,16 @@ public class Game
                 System.out.println("GAME OVER!");
             }
         }
-
+        
+        if(direction.equals("surEast")) {
+            nextRoom = currentRoom.surEastExit;
+            System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
+            if(direction != "surEast") {
+                System.out.println("Te rodean los orcos, oyes un sonido estridente, miras al cielo....Nazgul!");
+                System.out.println("GAME OVER!");
+            }
+        }*/
+        
         if (nextRoom == null) {
             System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado! Muevete!!");
         }
@@ -204,13 +213,13 @@ public class Game
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
 
-            System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
+            System.out.println("Ves los ejercitos desde el cielo");
 
             System.out.println();
         }
     }
 
-    public void printLocationInfo(){
+    private void printLocationInfo(){
         if(currentRoom.northExit != null) {
             System.out.print("north ");
         }

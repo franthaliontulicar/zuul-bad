@@ -61,5 +61,28 @@ public class Room
     {
         return description;
     }
+    
+    public Room getExit(String direccion){
+        Room siguienteArea = null; 
+        
+        if(direccion.equals("north")){
+          siguienteArea = northExit ;
+        }
+        if(direccion.equals("east")){
+          siguienteArea = eastExit ;
+        }
+        if(direccion.equals("south")){
+          siguienteArea = southExit ;
+        }
+        if(direccion.equals("west")){
+          siguienteArea = westExit ;
+        }
+        if(direccion.equals("surEast")){
+          siguienteArea = surEastExit ;
+        }
+        
+        return siguienteArea;
+    
+    }
 
 }
