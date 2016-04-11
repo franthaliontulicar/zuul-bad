@@ -169,7 +169,7 @@ public class Game
         }
         if(direction.equals("east")) {
             nextRoom = currentRoom.eastExit;
-             System.out.println("Estas en la puerta negra");
+            System.out.println("Estas en la puerta negra");
             System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
             if(direction !="east") {
                 System.out.println("Miras al cielo, ves una enorme figura alada, te asustas pensando en los Nazgul, pero te fijas bien....Aguilas?");
@@ -206,20 +206,24 @@ public class Game
 
             System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
 
-            if(currentRoom.northExit != null) {
-                System.out.print("north ");
-            }
-            if(currentRoom.eastExit != null) {
-                System.out.print("east ");
-            }
-            if(currentRoom.southExit != null) {
-                System.out.print("south ");
-            }
-            if(currentRoom.westExit != null) {
-                System.out.print("west ");
-            }
             System.out.println();
         }
+    }
+
+    public void printLocationInfo(){
+        if(currentRoom.northExit != null) {
+            System.out.print("north ");
+        }
+        if(currentRoom.eastExit != null) {
+            System.out.print("east ");
+        }
+        if(currentRoom.southExit != null) {
+            System.out.print("south ");
+        }
+        if(currentRoom.westExit != null) {
+            System.out.print("west ");
+        }
+
     }
 
     /** 
