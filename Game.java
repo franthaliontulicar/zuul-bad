@@ -44,11 +44,11 @@ public class Game
         atalaya = new Room(" en la atalaya de los orcos, precaucion");
 
         // initialise room exits
-        puerta.setExits(null, gondor,  ojo, monte, null);
-        gondor.setExits(null, null, null, puerta, null);
-        monte.setExits(null, puerta, null, null, null);
-        ojo.setExits(puerta, atalaya, null, null, null);
-        atalaya.setExits(null, null, null,  ojo, null);
+        puerta.setExits(null, gondor,  ojo, monte, null, null);
+        gondor.setExits(null, null, null, puerta, null, null);
+        monte.setExits(null, puerta, null, null, null, null);
+        ojo.setExits(puerta, atalaya, null, null, null, null);
+        atalaya.setExits(null, null, null,  ojo, null, null);
 
         currentRoom = monte;  // start game outside
     }
@@ -95,6 +95,13 @@ public class Game
         if(currentRoom.westExit != null) {
             System.out.print("west ");
         }
+         if(currentRoom.surEastExit != null) {
+            System.out.print("surEast ");
+        }
+         if(currentRoom.northWestExit != null) {
+            System.out.print("northWest ");
+        }
+        
         System.out.println();
     }
 
