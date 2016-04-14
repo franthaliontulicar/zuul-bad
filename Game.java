@@ -44,11 +44,11 @@ public class Game
         atalaya = new Room(" en la atalaya de los orcos, precaucion");
 
         // initialise room exits
-        puerta.setExits(null, gondor,  ojo, monte, null, null);
+        puerta.setExits(null, gondor,  ojo, monte, null, monte);
         gondor.setExits(null, null, null, puerta, null, null);
-        monte.setExits(null, puerta, null, null, null, null);
-        ojo.setExits(puerta, atalaya, null, null, null, null);
-        atalaya.setExits(null, null, null,  ojo, null, null);
+        monte.setExits(null, puerta, atalaya, ojo, puerta, null);
+        ojo.setExits(monte, puerta, atalaya, null, atalaya, null);
+        atalaya.setExits(monte, puerta, null,  ojo, null, ojo);
 
         currentRoom = monte;  // start game outside
     }
