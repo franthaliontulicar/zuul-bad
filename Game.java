@@ -37,10 +37,10 @@ public class Game
         Room puerta, gondor, monte, ojo, atalaya;
 
         // create the rooms
-        puerta = new Room(" en la puerta negra");
+        puerta = new Room("  la puerta negra");
         gondor = new Room(" MInas Tirith, estas a salvo");
         monte = new Room(" monte del destino");
-        ojo = new Room("stas cerca de Barad thur, cuidado con el ojo que todo lo  ve");
+        ojo = new Room(" cerca de Barad thur, cuidado con el ojo que todo lo  ve");
         atalaya = new Room(" en la atalaya de los orcos, precaucion");
 
         // initialise room exits
