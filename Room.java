@@ -67,16 +67,16 @@ public class Room
             siguienteArea = salidas.get("east") ;
         }
         if(direccion.equals("south")){
-           siguienteArea = salidas.get("south") ;
+            siguienteArea = salidas.get("south") ;
         }
         if(direccion.equals("west")){
-           siguienteArea = salidas.get("west") ;
+            siguienteArea = salidas.get("west") ;
         }
         if(direccion.equals("surEast")){
             siguienteArea = salidas.get("surEast") ;
         }
         if(direccion.equals("northWest")){
-           siguienteArea = salidas.get("northWest") ;
+            siguienteArea = salidas.get("northWest") ;
         }
         return siguienteArea;
 
@@ -103,13 +103,24 @@ public class Room
             salida = "west" ;
         }
         if(salidas.get("surEast") != null){
-           salida = "surEast" ;
+            salida = "surEast" ;
         }
         if(salidas.get("northWest") != null){
-           salida = "northWest" ;
+            salida = "northWest" ;
         }
-        
+
         return salida;
-        
+
+    }
+
+    /**
+     * Return a long description of this room, of the form:
+     *     You are in the 'name of room'
+     *     Exits: north west southwest
+     * @return A description of the room, including exits.
+     */
+    public String getLongDescription(){
+
+        return "Tu estas en " + getDescription() + "Salidas: " + getExitString();
     }
 }
