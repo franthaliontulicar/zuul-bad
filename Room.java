@@ -44,26 +44,9 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
-    public void setExits(Room north, Room east, Room south, Room west, Room surEast, Room northWest) 
+    public void setExits(String nombre, Room salida) 
     {
-        if(north != null)
-            northExit = north;
-            salidas.put("north",north);
-        if(east != null)
-            eastExit = east;
-            salidas.put("east", east);
-        if(south != null)
-            southExit = south;
-            salidas.put("south", south);
-        if(west != null)
-            westExit = west;
-            salidas.put("west", west);
-        if(surEast != null)
-            surEastExit = surEast; 
-            salidas.put("surEast", surEast);
-        if(northWest != null)
-            northWestExit = northWest;
-            salidas.put("northWest", northWest);
+        salidas.put(nombre,salida);
     }
 
     /**
