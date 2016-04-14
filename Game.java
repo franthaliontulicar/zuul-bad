@@ -44,25 +44,24 @@ public class Game
         atalaya = new Room(" en la atalaya de los orcos, precaucion");
 
         // initialise room exits
-        puerta.setExits("Gondor", gondor);
-        puerta.setExits("Barath Dhur", ojo);
-        puerta.setExits("Monte del Destino", monte);
-        puerta.setExits("Monte del Destino", monte);
-        gondor.setExits("Puerta Negra", puerta);
-        monte.setExits("Puerta Negra", puerta);
-        monte.setExits("Atalaya de los Orcos", atalaya);
-        monte.setExits("Barath Dhur", ojo);
-        monte.setExits("Puerta Negra", puerta);
-        ojo.setExits("Monte del Destino", monte);
-        ojo.setExits("Puerta Negra", puerta);
-        ojo.setExits("Atalaya de los Orcos", atalaya);
-        ojo.setExits("Atalaya de los Orcos", atalaya);
-        atalaya.setExits("Monte del Destino", monte);
-        atalaya.setExits("Puerta Negra", puerta);
-        atalaya.setExits("Barath Dhur", ojo);
-        atalaya.setExits("Barath Dhur", ojo);
-       
-        
+        puerta.setExits("east", gondor);
+        puerta.setExits("west", ojo);
+        puerta.setExits("northWest", monte);
+        puerta.setExits("north", monte);
+        gondor.setExits("west", puerta);
+        monte.setExits("east", puerta);
+        monte.setExits("south", atalaya);
+        monte.setExits("west", ojo);
+        monte.setExits("surEast", puerta);
+        ojo.setExits("north", monte);
+        ojo.setExits("east", puerta);
+        ojo.setExits("south", atalaya);
+        ojo.setExits("surEast", atalaya);
+        atalaya.setExits("north", monte);
+        atalaya.setExits("east", puerta);
+        atalaya.setExits("west", ojo);
+        atalaya.setExits("northWest", ojo);
+
         currentRoom = monte;  // start game outside
     }
 
@@ -142,7 +141,10 @@ public class Game
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
-
+        else if (commandWord.equals("look")) {
+            System.out.println(currentRoom.getLongDescription());
+            wantToQuit = false;
+        }
         return wantToQuit;
     }
 
@@ -159,7 +161,7 @@ public class Game
         System.out.println("Estas perdido  en Mordor.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+        System.out.println("   go quit help look");
     }
 
     /** 
@@ -233,7 +235,7 @@ public class Game
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
 
-            System.out.println("Ves los ejercitos desde el cielo");
+           // System.out.println("Ves los ejercitos desde el cielo");
 
             System.out.println();
         }
@@ -276,4 +278,6 @@ public class Game
             return true;  // signal that we want to quit
         }
     }
+
+    
 }
