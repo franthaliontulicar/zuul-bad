@@ -66,4 +66,8 @@ public class Parser
     public CommandWords getComando(){
         return commands;
     }
+    
+    public void mostrarComandos(){
+        System.out.println(getComando());
+    }
 }

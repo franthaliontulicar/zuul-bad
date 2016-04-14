@@ -165,6 +165,7 @@ public class Game
         
         CommandWords comando= parser.getComando();
         comando.showAll();
+        parser.mostrarComandos();
     }
 
     /** 
