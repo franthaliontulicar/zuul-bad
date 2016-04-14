@@ -121,6 +121,6 @@ public class Room
      */
     public String getLongDescription(){
 
-        return "Tu estas en " + getDescription() + "Salidas: " + getExitString();
+        return "Tu estas en " + getDescription() + " Salidas: " + getExitString();
     }
 }
