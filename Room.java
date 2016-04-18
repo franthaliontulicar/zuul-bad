@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.ArrayList;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -25,6 +26,7 @@ public class Room
     public HashMap<String, Room> salidas; 
     private String descripcionItem;
     private float pesoItem;
+    private ArrayList<Item> objetos;
 
     /**
      * Create a room described "description". Initially, it has
@@ -36,11 +38,19 @@ public class Room
     {
         this.description = description;
         salidas = new HashMap<>();
+        objetos = new ArrayList<>();
     }
-    
+
     public void crearItem(String descripcion, float peso){
         descripcionItem = descripcion;
         pesoItem = peso;
+
+    }
+
+    public void addItem(Item item){
+      
+        objetos.add(item);       
+
     }
 
     /**
@@ -96,25 +106,29 @@ public class Room
      * @ return A description of the available exits.
      */
     public String getExitString(){
-        String salida = null;
-        if(salidas.get("north") != null){ 
-            salida = "north" ;
+        String salida = "salida";
+        for(String clave : salidas.keySet()){
+            clave += salida;
+        }
+
+        /**if(salidas.get("north") != null){ 
+        salida = "north, east, south, west, surEast, northWest";
         }
         if(salidas.get("east") != null){
-            salida = "east" ;
+        salida = "east, south, west, surEast, northWest" ;
         }
         if(salidas.get("south") != null){
-            salida = "south" ;
+        salida = "south, west, sureast, northWest" ;
         }
         if(salidas.get("west") != null){
-            salida = "west" ;
+        salida = "west, sureast, northWest" ;
         }
         if(salidas.get("surEast") != null){
-            salida = "surEast" ;
+        salida = "surEast, northWest" ;
         }
         if(salidas.get("northWest") != null){
-            salida = "northWest" ;
-        }
+        salida = "northWest, south, surEast" ;
+        }*/
 
         return salida;
 
