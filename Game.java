@@ -315,10 +315,13 @@ public class Game
         if(anterior != null && continua == true){
             Room nextRoom = anterior;
             currentRoom = anterior;
-            printLocationInfo()
+            printLocationInfo();
             contAtras++;
         }
         
+        else{
+            System.out.println("No puede ir atras");
+        }
     }
 
     
