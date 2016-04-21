@@ -1,3 +1,4 @@
+import java.util.Stack;
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -19,8 +20,9 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private Room  anterior;
-    private int contAtras;
+     //private Room  anterior;
+    //private int contAtras;
+    private Stack <Room> anteriores;
 
     /**
      * Create the game and initialise its internal map.
@@ -29,6 +31,8 @@ public class Game
     {
         createRooms();
         parser = new Parser();
+        anteriores = new Stack<>();
+        
     }
 
     /**
@@ -69,7 +73,7 @@ public class Game
         monte.crearItem("Anilo Unico", 0.20F);
         ojo.crearItem("Silmarilion", 2.00F);
         atalaya.crearItem("Espada Orca", 12.50F);
-        anterior = null;
+        //anterior = null;
 
         currentRoom = monte;  // start game outside
     }
@@ -145,7 +149,11 @@ public class Game
             printHelp();
         }
         else if (commandWord.equals("go")) {
+            Room anterior = currentRoom;
             goRoom(command);
+            if(anterior != currentRoom){
+                anteriores.push(anterior);
+            }
         }
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
@@ -161,6 +169,7 @@ public class Game
         else if (commandWord.equals("back")) {
 
             irAtras(); 
+            System.out.println(currentRoom.getLongDescription());
 
         }
 
@@ -254,7 +263,7 @@ public class Game
             System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado! Muevete!!");
         }
         else {
-            anterior = currentRoom;
+            //anterior = currentRoom;
             currentRoom = nextRoom;
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
@@ -305,8 +314,18 @@ public class Game
     }
 
     private void irAtras(){
-        boolean  continua = true;
-        if(contAtras == 1){
+      // boolean  continua = true;
+        if(anteriores.empty()){
+           currentRoom = anteriores.pop();
+           
+        }
+        
+        else{
+         System.out.println("No puede ir atras");
+        
+        }
+        
+       /** if(contAtras == 1){
             continua= false;
         }
 
@@ -319,7 +338,7 @@ public class Game
 
         else{
             System.out.println("No puede ir atras");
-        }
+        }*/
     }
 
 }
