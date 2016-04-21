@@ -63,7 +63,7 @@ public class Game
         atalaya.setExits("east", puerta);
         atalaya.setExits("west", ojo);
         atalaya.setExits("northWest", ojo);
-       
+
         puerta.crearItem("Dardo", 2.50F);
         gondor.crearItem("Estrella de Earendil", 0.50F);    
         monte.crearItem("Anilo Unico", 0.20F);
@@ -159,12 +159,11 @@ public class Game
             wantToQuit = false;
         }
         else if (commandWord.equals("back")) {
-            
-           irAtras(); 
-            
+
+            irAtras(); 
+
         }
-        
-        
+
         return wantToQuit;
     }
 
@@ -182,7 +181,7 @@ public class Game
         System.out.println();
         //System.out.println("Your command words are:");
         //System.out.println("   go quit help look");
-        
+
         CommandWords comando= parser.getComando();
         comando.showAll();
         parser.mostrarComandos();
@@ -260,13 +259,12 @@ public class Game
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
 
-           // System.out.println("Ves los ejercitos desde el cielo");
+            // System.out.println("Ves los ejercitos desde el cielo");
 
             System.out.println();
         }
     }
-    
-   
+
 
     private void printLocationInfo(){
         System.out.println(currentRoom.getLongDescription());     
@@ -305,24 +303,23 @@ public class Game
             return true;  // signal that we want to quit
         }
     }
-    
-    public void irAtras(){
+
+    private void irAtras(){
         boolean  continua = true;
         if(contAtras == 1){
             continua= false;
         }
-    
+
         if(anterior != null && continua == true){
             Room nextRoom = anterior;
             currentRoom = anterior;
             printLocationInfo();
             contAtras++;
         }
-        
+
         else{
             System.out.println("No puede ir atras");
         }
     }
 
-    
 }
