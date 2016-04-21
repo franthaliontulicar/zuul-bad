@@ -19,6 +19,8 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    private Room  anterior;
+    private int contAtras;
 
     /**
      * Create the game and initialise its internal map.
@@ -67,6 +69,7 @@ public class Game
         monte.crearItem("Anilo Unico", 0.20F);
         ojo.crearItem("Silmarilion", 2.00F);
         atalaya.crearItem("Espada Orca", 12.50F);
+        anterior = null;
 
         currentRoom = monte;  // start game outside
     }
@@ -155,6 +158,12 @@ public class Game
             System.out.println("You have eaten now and you are not hungry any more");
             wantToQuit = false;
         }
+        else if (commandWord.equals("back")) {
+            
+           irAtras(); 
+            
+        }
+        
         
         return wantToQuit;
     }
@@ -246,6 +255,7 @@ public class Game
             System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado! Muevete!!");
         }
         else {
+            anterior = currentRoom;
             currentRoom = nextRoom;
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
@@ -255,6 +265,8 @@ public class Game
             System.out.println();
         }
     }
+    
+   
 
     private void printLocationInfo(){
         System.out.println(currentRoom.getLongDescription());     
@@ -292,6 +304,21 @@ public class Game
         else {
             return true;  // signal that we want to quit
         }
+    }
+    
+    public void irAtras(){
+        boolean  continua = true;
+        if(contAtras == 1){
+            continua= false;
+        }
+    
+        if(anterior != null && continua == true){
+            Room nextRoom = anterior;
+            currentRoom = anterior;
+            printLocationInfo()
+            contAtras++;
+        }
+        
     }
 
     

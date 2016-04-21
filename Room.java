@@ -106,7 +106,7 @@ public class Room
      * @ return A description of the available exits.
      */
     public String getExitString(){
-        String salida = "salida";
+        String salida = "north, east, south, west, surEast, northWest";
         for(String clave : salidas.keySet()){
             clave += salida;
         }
