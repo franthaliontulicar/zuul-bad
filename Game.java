@@ -20,7 +20,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-     //private Room  anterior;
+    //private Room  anterior;
     //private int contAtras;
     private Stack <Room> anteriores;
 
@@ -32,7 +32,7 @@ public class Game
         createRooms();
         parser = new Parser();
         anteriores = new Stack<>();
-        
+
     }
 
     /**
@@ -149,11 +149,7 @@ public class Game
             printHelp();
         }
         else if (commandWord.equals("go")) {
-            Room anterior = currentRoom;
             goRoom(command);
-            if(anterior != currentRoom){
-                anteriores.push(anterior);
-            }
         }
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
@@ -167,10 +163,7 @@ public class Game
             wantToQuit = false;
         }
         else if (commandWord.equals("back")) {
-
-            irAtras(); 
-            System.out.println(currentRoom.getLongDescription());
-
+            irAtras();
         }
 
         return wantToQuit;
@@ -264,6 +257,7 @@ public class Game
         }
         else {
             //anterior = currentRoom;
+            anteriores.push(currentRoom);
             currentRoom = nextRoom;
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
@@ -273,7 +267,6 @@ public class Game
             System.out.println();
         }
     }
-
 
     private void printLocationInfo(){
         System.out.println(currentRoom.getLongDescription());     
@@ -314,31 +307,16 @@ public class Game
     }
 
     private void irAtras(){
-      // boolean  continua = true;
-        if(anteriores.empty()){
-           currentRoom = anteriores.pop();
-           
+        if (!anteriores.empty()){
+            currentRoom = anteriores.pop();
         }
-        
-        else{
-         System.out.println("No puede ir atras");
-        
-        }
-        
-       /** if(contAtras == 1){
-            continua= false;
-        }
-
-        if(anterior != null && continua == true){
-            Room nextRoom = anterior;
-            currentRoom = anterior;
-            printLocationInfo();
-            contAtras++;
-        }
-
         else{
             System.out.println("No puede ir atras");
-        }*/
+        }
+        printLocationInfo();
+
     }
+
+   
 
 }
