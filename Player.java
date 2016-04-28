@@ -43,15 +43,26 @@ public class Player
     public int getNumZonas(){
         return recorrido.size();
 
-    }      
-
-    public void  coger(Item item){
-        if(currentRoom != null){
+    }   
+    
+    public void buscarItem(){
+    boolean encontrado = false;
+    while (encontrado){
+        System.out.println("Buscas por los alrededores");
+    }
+    
+    }
+    public void coger(Item item){
+        if(currentRoom != null && item.portable() == true){
             equipo.add(item);
 
+        } 
+        else{
+            System.out.println("No puedes coger el objeto");
         }
 
     }
+    
     public void dejar(Item item){
         if(currentRoom != null){
             equipo.remove(item);

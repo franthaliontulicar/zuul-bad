@@ -36,4 +36,13 @@ public class Item
     public String getDescripcion(){
         return descripcion;
     }
+    
+    public boolean portable(){
+        boolean equipar = false;
+        float pesoMax =20.0F;
+        if(peso <= pesoMax){
+            equipar = true;
+        }
+        return equipar;
+    }
 }
