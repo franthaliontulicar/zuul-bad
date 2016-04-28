@@ -144,4 +144,21 @@ public class Room
 
         return "Tu estas en " + getDescription() + " Salidas: " + getExitString() + "objeto: " + descripcionItem + "Peso de Objeto" + pesoItem;
     }
+    
+    public Item buscarItem(String descripcion){
+        boolean encontrado = false;
+        Item  objeto= null;
+        int index = 0;
+        while (index < objetos.size()){
+            
+            if(!encontrado){
+                objeto = objetos.get(index);
+            }
+            else{
+                System.out.println("Buscas por los alrededores");
+            }
+           index++; 
+        }
+        return objeto;
+    }
 }

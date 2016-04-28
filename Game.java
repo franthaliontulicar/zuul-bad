@@ -19,10 +19,12 @@ import java.util.Stack;
 public class Game 
 {
     private Parser parser;
+    private Player hobbit;
     private Room currentRoom;
     //private Room  anterior;
     //private int contAtras;
     private Stack <Room> anteriores;
+   
 
     /**
      * Create the game and initialise its internal map.
@@ -32,6 +34,7 @@ public class Game
         createRooms();
         parser = new Parser();
         anteriores = new Stack<>();
+        hobbit = new Player(currentRoom);
 
     }
 
@@ -165,6 +168,17 @@ public class Game
         else if (commandWord.equals("back")) {
             irAtras();
         }
+         else if (commandWord.equals("take")) {
+           hobbit.coger(command. getSecondWord());
+        }
+        else if (commandWord.equals("drop")) {
+           hobbit.dejar(command. getSecondWord());
+        }
+        else if (commandWord.equals("item")) {
+           hobbit. getNumItems();
+        }
+        
+        
 
         return wantToQuit;
     }

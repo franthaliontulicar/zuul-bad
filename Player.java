@@ -44,16 +44,12 @@ public class Player
         return recorrido.size();
 
     }   
+
     
-    public void buscarItem(){
-    boolean encontrado = false;
-    while (encontrado){
-        System.out.println("Buscas por los alrededores");
-    }
-    
-    }
-    public void coger(Item item){
-        if(currentRoom != null && item.portable() == true){
+
+    public void coger(String descripcion){
+        Item item = currentRoom.buscarItem(descripcion);
+        if(currentRoom != null){
             equipo.add(item);
 
         } 
@@ -62,8 +58,9 @@ public class Player
         }
 
     }
-    
-    public void dejar(Item item){
+
+    public void dejar(String descripcion){
+        Item item = currentRoom.buscarItem(descripcion);
         if(currentRoom != null){
             equipo.remove(item);
 
