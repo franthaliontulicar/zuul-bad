@@ -71,11 +71,11 @@ public class Game
         atalaya.setExits("west", ojo);
         atalaya.setExits("northWest", ojo);
 
-        puerta.crearItem("Dardo", 2.50F);
-        gondor.crearItem("Estrella de Earendil", 0.50F);    
-        monte.crearItem("Anilo Unico", 0.20F);
-        ojo.crearItem("Silmarilion", 2.00F);
-        atalaya.crearItem("Espada Orca", 12.50F);
+        puerta.addItem(puerta.buscarItem("dardo"));
+        gondor.addItem(gondor.buscarItem("Estrella de Earendil"));    
+        monte.addItem(monte.buscarItem("Anilo Unico"));
+        ojo.addItem(ojo.buscarItem("Silmarilion"));
+        atalaya.addItem(atalaya.buscarItem("Espada Orca"));
         //anterior = null;
 
         currentRoom = monte;  // start game outside
