@@ -24,9 +24,9 @@ public class Room
     public Room surEastExit;
     public Room northWestExit;
     public HashMap<String, Room> salidas; 
-    private String descripcionItem;
-    private float pesoItem;
+    
     private ArrayList<Item> objetos;
+    
 
     /**
      * Create a room described "description". Initially, it has
@@ -39,16 +39,12 @@ public class Room
         this.description = description;
         salidas = new HashMap<>();
         objetos = new ArrayList<>();
-    }
-
-    public void crearItem(String descripcion, float peso){
-        descripcionItem = descripcion;
-        pesoItem = peso;
 
     }
 
+    
     public void addItem(Item item){
-      
+
         objetos.add(item);       
 
     }
@@ -141,23 +137,26 @@ public class Room
      * @return A description of the room, including exits.
      */
     public String getLongDescription(){
+        
+          
 
-        return "Tu estas en " + getDescription() + " Salidas: " + getExitString() + "objeto: " + descripcionItem + "Peso de Objeto" + pesoItem;
+        
+        return "Tu estas en " + getDescription() + " Salidas: " + getExitString();
     }
-    
+
     public Item buscarItem(String descripcion){
         boolean encontrado = false;
         Item  objeto= null;
         int index = 0;
         while (index < objetos.size()){
-            
+
             if(!encontrado){
                 objeto = objetos.get(index);
             }
             else{
                 System.out.println("Buscas por los alrededores");
             }
-           index++; 
+            index++; 
         }
         return objeto;
     }

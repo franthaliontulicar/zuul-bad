@@ -71,11 +71,11 @@ public class Game
         atalaya.setExits("west", ojo);
         atalaya.setExits("northWest", ojo);
 
-        puerta.addItem(puerta.buscarItem("dardo"));
-        gondor.addItem(gondor.buscarItem("Estrella de Earendil"));    
-        monte.addItem(monte.buscarItem("Anilo Unico"));
-        ojo.addItem(ojo.buscarItem("Silmarilion"));
-        atalaya.addItem(atalaya.buscarItem("Espada Orca"));
+        puerta.addItem(new Item(2.0F, "Dardo"));
+        gondor.addItem(new Item(0.7F, "Estrella"));    
+        monte.addItem(new Item(0.2F, "Anillo "));
+        ojo.addItem(new Item(0.8F, "Silmarilion"));
+        atalaya.addItem(new Item(5.0F, "Espada Orca"));
         //anterior = null;
 
         currentRoom = monte;  // start game outside
@@ -168,7 +168,7 @@ public class Game
         else if (commandWord.equals("back")) {
             irAtras();
         }
-         else if (commandWord.equals("take")) {
+         else if (commandWord.equals("take"+currentRoom.buscarItem(command.getSecondWord()))) {
            hobbit.coger(command. getSecondWord());
         }
         else if (commandWord.equals("drop")) {
