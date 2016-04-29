@@ -94,10 +94,13 @@ public class Player
 
     public void dejar(String descripcion){
         Item item = currentRoom.buscarItem(descripcion);
-        if(currentRoom != null){
+        if(item != null){
             equipo.remove(item);
-            System.out.println("has abandonado "+descripcion);
+            System.out.println("has abandonado "+item.getDescripcion());
 
+        }
+        else{
+            System.out.println("No existe el objeto");
         }
     }
 }
