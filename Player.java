@@ -12,7 +12,7 @@ public class Player
     private Room currentRoom;
     private ArrayList<Item> equipo;
     private Stack<Room> recorrido;
-    public  float pesoMaxCarga;
+    private  float pesoMaxCarga;
     /**
      * Constructor for objects of class Player
      */
