@@ -37,12 +37,6 @@ public class Item
         return descripcion;
     }
     
-    public boolean portable(){
-        boolean equipar = false;
-        float pesoMax =20.0F;
-        if(peso <= pesoMax){
-            equipar = true;
-        }
-        return equipar;
-    }
+   
+    
 }

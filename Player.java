@@ -12,16 +12,17 @@ public class Player
     private Room currentRoom;
     private ArrayList<Item> equipo;
     private Stack<Room> recorrido;
-
+    public  float pesoMaxCarga;
     /**
      * Constructor for objects of class Player
      */
-    public Player(Room zona)
+    public Player(Room zona, float pesoCarga)
     {
         // initialise instance variables
         currentRoom = zona;
         equipo = new ArrayList<>();
         recorrido = new Stack<>();
+        pesoMaxCarga = pesoCarga;
     }
 
     /**
@@ -45,16 +46,48 @@ public class Player
 
     }   
 
-    
+    public void verEquipo(){
+        if(equipo.size() != 0){
+            System.out.println("Ver equipo");
+            for(Item item: equipo){
+                System.out.println(item.getDescripcion()+"peso: "+item.getPeso());
+            }
+        }
+        else{
+            System.out.println("No tiene nada equipado, pide ayuda a Smeagol");
+        }
+
+    }
+
+    public float getPesoMaxCarga(){
+        return pesoMaxCarga;
+    }
+
+    public boolean portable(){
+        boolean equipar = false;
+        for(Item item : equipo){
+            if(item.getPeso() <= pesoMaxCarga){
+                equipar = true;
+            }
+
+        }
+
+        return equipar;
+    }
 
     public void coger(String descripcion){
         Item item = currentRoom.buscarItem(descripcion);
-        if(currentRoom != null){
-            equipo.add(item);
-
+        if(item != null){
+            if(portable()== true){
+                equipo.add(item);
+                System.out.println("has cogido "+item.getDescripcion());
+            }
+            else{
+                 System.out.println("El objeto no se puede cargar");
+            }
         } 
         else{
-            System.out.println("No puedes coger el objeto");
+            System.out.println("No existe el objeto");
         }
 
     }
@@ -63,6 +96,7 @@ public class Player
         Item item = currentRoom.buscarItem(descripcion);
         if(currentRoom != null){
             equipo.remove(item);
+            System.out.println("has abandonado "+descripcion);
 
         }
     }

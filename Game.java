@@ -34,7 +34,7 @@ public class Game
         createRooms();
         parser = new Parser();
         anteriores = new Stack<>();
-        hobbit = new Player(currentRoom);
+        hobbit = new Player(currentRoom, 50.0F);
 
     }
 
@@ -162,7 +162,7 @@ public class Game
             wantToQuit = false;
         }
         else if (commandWord.equals("eat")) {
-            System.out.println("You have eaten now and you are not hungry any more");
+            System.out.println("Has comido y  ahora no tienes hambre");
             wantToQuit = false;
         }
         else if (commandWord.equals("back")) {
@@ -175,7 +175,7 @@ public class Game
            hobbit.dejar(command. getSecondWord());
         }
         else if (commandWord.equals("item")) {
-           hobbit. getNumItems();
+           hobbit. verEquipo();
         }
         
         
