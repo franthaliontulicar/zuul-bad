@@ -168,7 +168,7 @@ public class Game
         else if (commandWord.equals("back")) {
             irAtras();
         }
-         else if (commandWord.equals("take"+currentRoom.buscarItem(command.getSecondWord()))) {
+         else if (commandWord.equals("take")) {
            hobbit.coger(command. getSecondWord());
         }
         else if (commandWord.equals("drop")) {

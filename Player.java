@@ -50,7 +50,7 @@ public class Player
         if(equipo.size() != 0){
             System.out.println("Ver equipo");
             for(Item item: equipo){
-                System.out.println(item.getDescripcion()+"peso: "+item.getPeso());
+                System.out.println(item.getDescripcion()+"peso: "+item.getPeso()+" Kg ");
             }
         }
         else{
@@ -80,10 +80,11 @@ public class Player
         if(item != null){
             if(portable()== true){
                 equipo.add(item);
+                pesoMaxCarga += item.getPeso();
                 System.out.println("has cogido "+item.getDescripcion());
             }
             else{
-                 System.out.println("El objeto no se puede cargar");
+                System.out.println("El objeto no se puede cargar");
             }
         } 
         else{
@@ -93,14 +94,17 @@ public class Player
     }
 
     public void dejar(String descripcion){
-        Item item = currentRoom.buscarItem(descripcion);
-        if(item != null){
-            equipo.remove(item);
-            System.out.println("has abandonado "+item.getDescripcion());
-
-        }
-        else{
-            System.out.println("No existe el objeto");
+        int index = 0;
+        boolean encontrado = false;
+        while(index < equipo.size() && !encontrado){
+            if(equipo.get(index).getDescripcion().equals(descripcion)){
+                currentRoom.addItem(equipo.get(index));
+                pesoMaxCarga-= equipo.get(index).getPeso();
+                equipo.remove(equipo.get(index));
+                encontrado = true;
+                System.out.println("he tirado el objeto");
+            }
+            index++;
         }
     }
 }

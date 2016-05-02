@@ -137,11 +137,16 @@ public class Room
      * @return A description of the room, including exits.
      */
     public String getLongDescription(){
-        
-          
+        int i = 0;
+        String info =""; 
+        while(i < objetos.size()){
+          for(Item item: objetos){
+              objetos.get(i);
+              info = "Tu estas en " + getDescription() + " Salidas: " + getExitString()+ "Objeto: "+item.getDescripcion()+ " peso: "+ item.getPeso();
+            }
 
-        
-        return "Tu estas en " + getDescription() + " Salidas: " + getExitString();
+        }
+        return info;
     }
 
     public Item buscarItem(String descripcion){
