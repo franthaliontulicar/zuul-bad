@@ -101,7 +101,7 @@ public class Player
         }
     }
      
-    private void goRoom(Command command) 
+   public void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
@@ -129,7 +129,7 @@ public class Player
         }
     }
     
-    private void irAtras(){
+    public void irAtras(){
         if (!recorrido.empty()){
             currentRoom = recorrido.pop();
         }
