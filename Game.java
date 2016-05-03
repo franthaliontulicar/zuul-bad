@@ -71,11 +71,11 @@ public class Game
         atalaya.setExits("west", ojo);
         atalaya.setExits("northWest", ojo);
 
-        puerta.addItem(new Item(2.0F, "Dardo"));
-        gondor.addItem(new Item(0.7F, "Estrella"));    
-        monte.addItem(new Item(0.2F, "Anillo "));
-        ojo.addItem(new Item(0.8F, "Silmarilion"));
-        atalaya.addItem(new Item(5.0F, "Espada Orca"));
+        puerta.addItem(new Item(2.0F, "Dardo", true));
+        gondor.addItem(new Item(0.7F, "Estrella", false));    
+        monte.addItem(new Item(0.2F, "Anillo ", true));
+        ojo.addItem(new Item(0.8F, "Silmarilion", false));
+        atalaya.addItem(new Item(5.0F, "Espada Orca", true));
         //anterior = null;
 
         currentRoom = monte;  // start game outside

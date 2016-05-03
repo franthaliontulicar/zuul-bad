@@ -165,4 +165,16 @@ public class Room
         }
         return objeto;
     }
+    
+     public void elimnaItem(Item item){
+         int index = 0;
+         boolean encontrado = false;
+         while(index < objetos.size() && !encontrado){
+            if(objetos.get(index).getDescripcion().equals(item.getDescripcion())){
+                 objetos.remove(objetos.get(index));
+                 encontrado = true;
+            }
+             index++;
+         }
+    }
 }
