@@ -24,7 +24,6 @@ public class Game
     //private Room  anterior;
     //private int contAtras;
     private Stack <Room> anteriores;
-   
 
     /**
      * Create the game and initialise its internal map.
@@ -147,37 +146,38 @@ public class Game
             return false;
         }
 
-        Option commandWord = command.getCommandWord();
-        if (commandWord.equals(Option.HELP)) {
+        Option comando = command.getCommandWord();
+        switch(comando){
+            case HELP:
             printHelp();
-        }
-        else if (commandWord.equals(Option.GO)) {
-           hobbit.goRoom(command);
-        }
-        else if (commandWord.equals(Option.QUIT)) {
+            break;
+            case QUIT:
             wantToQuit = quit(command);
-        }
-        else if (commandWord.equals(Option.LOOK)) {
+            break;
+            case GO:
+            hobbit.goRoom(command);
+            break;
+            case LOOK:
             hobbit.printLocationInfo();
-        }
-        else if (commandWord.equals(Option.EAT)) {
-            System.out.println("Has comido y  ahora no tienes hambre");
-            wantToQuit = false;
-        }
-        else if (commandWord.equals(Option.BACK)) {
+            break;
+            case EAT:
+            System.out.println("Has comido hasta saciarte, ya no estas hambriento");
+            break;
+            case TAKE:
+            hobbit.coger(command.getSecondWord());
+            break;
+            case DROP:
+            hobbit.dejar(command.getSecondWord());
+            break;
+            case ITEM:
+            hobbit.verEquipo();
+            break;
+            case BACK:
             hobbit.irAtras();
+            hobbit.printLocationInfo();
+            break;        
         }
-         else if (commandWord.equals(Option.TAKE)) {
-           hobbit.coger(command. getSecondWord());
-        }
-        else if (commandWord.equals(Option.DROP)) {
-           hobbit.dejar(command. getSecondWord());
-        }
-        else if (commandWord.equals(Option.ITEM)) {
-           hobbit. verEquipo();
-        }
-        
-        
+
 
         return wantToQuit;
     }
@@ -202,7 +202,6 @@ public class Game
         parser.mostrarComandos();
     }
 
-      
 
     /** 
      * "Quit" was entered. Check the rest of the command to see
@@ -219,8 +218,6 @@ public class Game
             return true;  // signal that we want to quit
         }
     }
-
-   
 
 
 }
