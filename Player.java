@@ -65,7 +65,6 @@ public class Player
         return pesoMaxCarga;
     }
 
-
     public void coger(String descripcion){
         Item item = currentRoom.buscarItem(descripcion);
         if(item != null && peso+item.getPeso() < pesoMaxCarga && item.esPortable()== true ){
@@ -93,15 +92,15 @@ public class Player
                 encontrado = true;
                 System.out.println("he tirado el objeto");
             }
-                        
+            index++;
             if(!encontrado) {
                 System.out.println("No llevo  nada");
             }
-            index++;
+
         }
     }
-     
-   public void goRoom(Command command) 
+
+    public void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
@@ -113,22 +112,20 @@ public class Player
 
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
-        
 
         if (nextRoom == null) {
             System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado! Muevete!!");
         }
         else {
             //anterior = currentRoom;
-           recorrido.push(currentRoom);
+            recorrido.push(currentRoom);
             currentRoom = nextRoom;
             System.out.println( currentRoom.getDescription());
             System.out.println();
 
-                    
         }
     }
-    
+
     public void irAtras(){
         if (!recorrido.empty()){
             currentRoom = recorrido.pop();
@@ -136,6 +133,6 @@ public class Player
         else{
             System.out.println("No puede ir atras");
         }
-       
+
     }
 }
