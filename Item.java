@@ -10,15 +10,16 @@ public class Item
     // instance variables - replace the example below with your own
     private float peso;
     private String descripcion;
-
+    private boolean portable;
     /**
      * Constructor for objects of class Item
      */
-    public Item(float pesoItem, String descripcionItem)
+    public Item(float pesoItem, String descripcionItem, boolean portar)
     {
         // initialise instance variables
         peso = pesoItem;
         descripcion = descripcionItem;
+        portable = portar;
     }
 
     /**
@@ -37,6 +38,9 @@ public class Item
         return descripcion;
     }
     
+    public boolean esPortable(){
+        return portable;
+    }
    
     
 }

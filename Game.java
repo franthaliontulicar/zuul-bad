@@ -71,11 +71,11 @@ public class Game
         atalaya.setExits("west", ojo);
         atalaya.setExits("northWest", ojo);
 
-        puerta.addItem(puerta.buscarItem("dardo"));
-        gondor.addItem(gondor.buscarItem("Estrella de Earendil"));    
-        monte.addItem(monte.buscarItem("Anilo Unico"));
-        ojo.addItem(ojo.buscarItem("Silmarilion"));
-        atalaya.addItem(atalaya.buscarItem("Espada Orca"));
+        puerta.addItem(new Item(2.0F, "Dardo", true));
+        gondor.addItem(new Item(0.7F, "Estrella", false));    
+        monte.addItem(new Item(0.2F, "Anillo ", true));
+        ojo.addItem(new Item(0.8F, "Silmarilion", false));
+        atalaya.addItem(new Item(5.0F, "Espada Orca", true));
         //anterior = null;
 
         currentRoom = monte;  // start game outside
@@ -152,7 +152,7 @@ public class Game
             printHelp();
         }
         else if (commandWord.equals("go")) {
-            goRoom(command);
+           hobbit.goRoom(command);
         }
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
@@ -166,7 +166,7 @@ public class Game
             wantToQuit = false;
         }
         else if (commandWord.equals("back")) {
-            irAtras();
+            hobbit.irAtras();
         }
          else if (commandWord.equals("take")) {
            hobbit.coger(command. getSecondWord());
@@ -207,80 +207,7 @@ public class Game
      * Try to go in one direction. If there is an exit, enter
      * the new room, otherwise print an error message.
      */
-    private void goRoom(Command command) 
-    {
-        if(!command.hasSecondWord()) {
-            // if there is no second word, we don't know where to go...
-            System.out.println("Go where?");
-            return;
-        }
-
-        String direction = command.getSecondWord();
-
-        // Try to leave current room.
-        Room nextRoom = currentRoom.getExit(direction);
-        /**if(direction.equals("north")) {
-        nextRoom = currentRoom.northExit;
-        System.out.println("Estas en el monte del destinoa");
-        System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
-        if(direction!="north") {
-        System.out.println("Te rodean los orcos, oyes un sonido estridente, miras al cielo....Nazgul!");
-        System.out.println("GAME OVER!");
-        }
-        }
-        if(direction.equals("east")) {
-        nextRoom = currentRoom.eastExit;
-        System.out.println("Estas en la puerta negra");
-        System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
-        if(direction !="east") {
-        System.out.println("Miras al cielo, ves una enorme figura alada, te asustas pensando en los Nazgul, pero te fijas bien....Aguilas?");
-        System.out.println("Enorabuena, has conseguido salir, estas en GONDOR!!!");
-        }
-
-        }
-        if(direction.equals("south")) {
-        nextRoom = currentRoom.southExit;
-        System.out.println("Estas la atalaya de los orcos");
-        System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
-        if(direction !="south") {
-        System.out.println("Te rodean los orcos, oyes un sonido estridente, miras al cielo....Nazgul!");
-        System.out.println("GAME OVER!");
-        }
-        }
-        if(direction.equals("west")) {
-        nextRoom = currentRoom.westExit;
-        System.out.println("Estas en Barad thur");
-        System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
-        if(direction !="west") {
-        System.out.println("Te rodean los orcos, oyes un sonido estridente, miras al cielo....Nazgul!");
-        System.out.println("GAME OVER!");
-        }
-        }
-
-        if(direction.equals("surEast")) {
-        nextRoom = currentRoom.surEastExit;
-        System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado!");
-        if(direction != "surEast") {
-        System.out.println("Te rodean los orcos, oyes un sonido estridente, miras al cielo....Nazgul!");
-        System.out.println("GAME OVER!");
-        }
-        }*/
-
-        if (nextRoom == null) {
-            System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado! Muevete!!");
-        }
-        else {
-            //anterior = currentRoom;
-            anteriores.push(currentRoom);
-            currentRoom = nextRoom;
-            System.out.println("You are " + currentRoom.getDescription());
-            System.out.print("Exits: ");
-
-            // System.out.println("Ves los ejercitos desde el cielo");
-
-            System.out.println();
-        }
-    }
+    
 
     private void printLocationInfo(){
         System.out.println(currentRoom.getLongDescription());     
@@ -320,16 +247,7 @@ public class Game
         }
     }
 
-    private void irAtras(){
-        if (!anteriores.empty()){
-            currentRoom = anteriores.pop();
-        }
-        else{
-            System.out.println("No puede ir atras");
-        }
-        printLocationInfo();
-
-    }
+   
 
 
 }
