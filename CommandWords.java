@@ -22,16 +22,16 @@ public class CommandWords
     {
         // nothing to do at the moment...
         comandos = new HashMap<>();
-        comandos.put("andare", Option.GO);
-        comandos.put("smettere", Option.QUIT);
-        comandos.put("aiuto", Option.HELP);
-        comandos.put("guarda", Option.LOOK);
-        comandos.put("mangiare", Option.EAT);
-        comandos.put("indietro", Option.BACK);
-        comandos.put("prendere", Option.TAKE);
-        comandos.put("far cadere", Option.DROP);
-        comandos.put("elementi", Option.ITEM);
-        comandos.put("sconosciuto", Option.UNKNOWN);
+        comandos.put(Option.GO.getComando(),Option.GO);
+        comandos.put(Option.QUIT.getComando(), Option.QUIT);
+        comandos.put(Option.HELP.getComando(), Option.HELP);
+        comandos.put(Option.LOOK.getComando(), Option.LOOK);
+        comandos.put(Option.EAT.getComando(), Option.EAT);
+        comandos.put(Option.BACK.getComando(), Option.BACK);
+        comandos.put(Option.TAKE.getComando(), Option.TAKE);
+        comandos.put(Option.DROP.getComando(), Option.DROP);
+        comandos.put(Option.ITEM.getComando(), Option.ITEM);
+        comandos.put(Option.UNKNOWN.getComando(), Option.UNKNOWN);
     }
 
     /**
