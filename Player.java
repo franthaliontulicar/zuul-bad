@@ -135,4 +135,26 @@ public class Player
         }
 
     }
+
+    public void printLocationInfo(){
+        System.out.println(currentRoom.getLongDescription());     
+
+        /**if(currentRoom.northExit != null) {
+        System.out.print("north ");
+        }
+        if(currentRoom.eastExit != null) {
+        System.out.print("east ");
+        }
+        if(currentRoom.southExit != null) {
+        System.out.print("south ");
+        }
+        if(currentRoom.westExit != null) {
+        System.out.print("west ");
+        }
+
+        if(currentRoom.surEastExit != null) {
+        System.out.print("surEast ");
+        }*/
+
+    }
 }

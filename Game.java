@@ -147,34 +147,33 @@ public class Game
             return false;
         }
 
-        String commandWord = command.getCommandWord();
-        if (commandWord.equals("help")) {
+        Option commandWord = command.getCommandWord();
+        if (commandWord.equals(Option.HELP)) {
             printHelp();
         }
-        else if (commandWord.equals("go")) {
+        else if (commandWord.equals(Option.GO)) {
            hobbit.goRoom(command);
         }
-        else if (commandWord.equals("quit")) {
+        else if (commandWord.equals(Option.QUIT)) {
             wantToQuit = quit(command);
         }
-        else if (commandWord.equals("look")) {
-            System.out.println(currentRoom.getLongDescription());
-            wantToQuit = false;
+        else if (commandWord.equals(Option.LOOK)) {
+            hobbit.printLocationInfo();
         }
-        else if (commandWord.equals("eat")) {
+        else if (commandWord.equals(Option.EAT)) {
             System.out.println("Has comido y  ahora no tienes hambre");
             wantToQuit = false;
         }
-        else if (commandWord.equals("back")) {
+        else if (commandWord.equals(Option.BACK)) {
             hobbit.irAtras();
         }
-         else if (commandWord.equals("take")) {
+         else if (commandWord.equals(Option.TAKE)) {
            hobbit.coger(command. getSecondWord());
         }
-        else if (commandWord.equals("drop")) {
+        else if (commandWord.equals(Option.DROP)) {
            hobbit.dejar(command. getSecondWord());
         }
-        else if (commandWord.equals("item")) {
+        else if (commandWord.equals(Option.ITEM)) {
            hobbit. verEquipo();
         }
         
@@ -203,33 +202,7 @@ public class Game
         parser.mostrarComandos();
     }
 
-    /** 
-     * Try to go in one direction. If there is an exit, enter
-     * the new room, otherwise print an error message.
-     */
-    
-
-    private void printLocationInfo(){
-        System.out.println(currentRoom.getLongDescription());     
-
-        /**if(currentRoom.northExit != null) {
-        System.out.print("north ");
-        }
-        if(currentRoom.eastExit != null) {
-        System.out.print("east ");
-        }
-        if(currentRoom.southExit != null) {
-        System.out.print("south ");
-        }
-        if(currentRoom.westExit != null) {
-        System.out.print("west ");
-        }
-
-        if(currentRoom.surEastExit != null) {
-        System.out.print("surEast ");
-        }*/
-
-    }
+      
 
     /** 
      * "Quit" was entered. Check the rest of the command to see
