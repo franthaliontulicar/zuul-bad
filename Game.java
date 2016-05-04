@@ -75,7 +75,7 @@ public class Game
         gondor.addItem(new Item(0.7F, "Estrella", false));    
         monte.addItem(new Item(0.2F, "Anillo ", true));
         ojo.addItem(new Item(0.8F, "Silmarilion", false));
-        atalaya.addItem(new Item(5.0F, "Espada Orca", true));
+        atalaya.addItem(new Item(5.0F, "Espada ", true));
         //anterior = null;
 
         currentRoom = monte;  // start game outside
