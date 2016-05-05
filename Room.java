@@ -107,24 +107,7 @@ public class Room
             clave += salida;
         }
 
-        /**if(salidas.get("north") != null){ 
-        salida = "north, east, south, west, surEast, northWest";
-        }
-        if(salidas.get("east") != null){
-        salida = "east, south, west, surEast, northWest" ;
-        }
-        if(salidas.get("south") != null){
-        salida = "south, west, sureast, northWest" ;
-        }
-        if(salidas.get("west") != null){
-        salida = "west, sureast, northWest" ;
-        }
-        if(salidas.get("surEast") != null){
-        salida = "surEast, northWest" ;
-        }
-        if(salidas.get("northWest") != null){
-        salida = "northWest, south, surEast" ;
-        }*/
+       
 
         return salida;
 
