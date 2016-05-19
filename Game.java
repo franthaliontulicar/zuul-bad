@@ -33,7 +33,7 @@ public class Game
         createRooms();
         parser = new Parser();
         anteriores = new Stack<>();
-        hobbit = new Player(currentRoom, 50.0F);
+        hobbit = new Player(currentRoom, 50);
 
     }
 
@@ -70,11 +70,11 @@ public class Game
         atalaya.setExits("west", ojo);
         atalaya.setExits("northWest", ojo);
 
-        puerta.addItem(new Item(2.0F, "Dardo", true));
+        puerta.addItem(new Item(20.0F, "Dardo", true));
         gondor.addItem(new Item(0.7F, "Estrella", false));    
-        monte.addItem(new Item(0.2F, "Anillo ", true));
-        ojo.addItem(new Item(0.8F, "Silmarilion", false));
-        atalaya.addItem(new Item(5.0F, "Espada ", true));
+        monte.addItem(new Item(30.2F, "Anillo ", true));
+        ojo.addItem(new Item(10.8F, "Silmarilion", true));
+        atalaya.addItem(new Item(10.0F, "Espada ", true));
         //anterior = null;
 
         currentRoom = monte;  // start game outside

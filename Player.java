@@ -67,63 +67,66 @@ public class Player
 
     public void coger(String descripcion){
         Item item = currentRoom.buscarItem(descripcion);
-        if(item != null && peso+item.getPeso() < pesoMaxCarga && item.esPortable()== true ){
+
+        if(item != null && (peso+item.getPeso() < pesoMaxCarga) && item.esPortable()== true ){
 
             equipo.add(item);
             pesoMaxCarga += item.getPeso();
-            System.out.println("has cogido "+item.getDescripcion());
             currentRoom.elimnaItem(item);
-
+            System.out.println("has cogido "+item.getDescripcion());
         } 
         else{
             System.out.println("El objeto no se puede cargar");
-        }
 
+        }
     }
 
     public void dejar(String descripcion){
-        int index = 0;
+        int i = 0;
         boolean encontrado = false;
-        while(index < equipo.size() && !encontrado){
-            if(equipo.get(index).getDescripcion().equals(descripcion)){
-                currentRoom.addItem(equipo.get(index));
-                pesoMaxCarga-= equipo.get(index).getPeso();
-                equipo.remove(equipo.get(index));
+        while(i < equipo.size() && !encontrado){
+            if(equipo.get(i).getDescripcion().equals(descripcion)){
+                currentRoom.addItem(equipo.get(i));
+                peso -= equipo.get(i).getPeso();
+                equipo.remove(equipo.get(i));
                 encontrado = true;
-                System.out.println("he tirado el objeto");
+                System.out.println("Item soltado!");
             }
-            index++;
-            if(!encontrado) {
-                System.out.println("No llevo  nada");
-            }
-
+            i++;
         }
+        if(!encontrado)
+            System.out.println("No tengo nada que tirar");
+
     }
 
     public void goRoom(Command command) 
     {
-        if(!command.hasSecondWord()) {
-            // if there is no second word, we don't know where to go...
-            System.out.println("Go where?");
-            return;
-        }
-
         String direction = command.getSecondWord();
-
-        // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
+        int index = 0;
+        while(equipo.size() >= 2 &&  nextRoom != null){
+            if((peso + equipo.get(index).getPeso() < pesoMaxCarga) && equipo.get(index).esPortable()== true){
+                if(!command.hasSecondWord()) {
+                    // if there is no second word, we don't know where to go...
+                    System.out.println("Go where?");
+                    return; 
+                }
 
-        if (nextRoom == null) {
-            System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado! Muevete!!");
-        }
-        else {
-            //anterior = currentRoom;
-            recorrido.push(currentRoom);
-            currentRoom = nextRoom;
-            System.out.println( currentRoom.getDescription());
-            System.out.println();
 
+                if (nextRoom == null) {
+                    System.out.println("Notas que tu  arma elfica reluce, se acercan los orcos, cuidado! Muevete!!");
+                }
+                else {
+                    //anterior = currentRoom;
+                    recorrido.push(currentRoom);
+                    currentRoom = nextRoom;
+                    System.out.println( currentRoom.getDescription());
+                    System.out.println();
+
+                }
+            }
         }
+        index ++;
     }
 
     public void irAtras(){
@@ -138,8 +141,6 @@ public class Player
 
     public void printLocationInfo(){
         System.out.println(currentRoom.getLongDescription());     
-
-        
 
     }
 }
