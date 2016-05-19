@@ -103,8 +103,9 @@ public class Player
     {
         String direction = command.getSecondWord();
         Room nextRoom = currentRoom.getExit(direction);
+        
         int index = 0;
-        while(equipo.size() >= 2 &&  nextRoom != null){
+        while(equipo.size() >= 2 &&  !recorrido.empty()){
             if((peso + equipo.get(index).getPeso() < pesoMaxCarga) && equipo.get(index).esPortable()== true){
                 if(!command.hasSecondWord()) {
                     // if there is no second word, we don't know where to go...
