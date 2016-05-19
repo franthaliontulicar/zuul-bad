@@ -14,10 +14,11 @@ public class Player
     private Stack<Room> recorrido;
     private  float pesoMaxCarga;
     private float peso;
+    private Item piedraHogar;
     /**
      * Constructor for objects of class Player
      */
-    public Player(Room zona, float pesoCarga)
+    public Player(Room zona, float pesoCarga, Item posada)
     {
         // initialise instance variables
         currentRoom = zona;
@@ -25,6 +26,7 @@ public class Player
         recorrido = new Stack<>();
         pesoMaxCarga = pesoCarga;
         peso = 0;
+        piedraHogar = posada;
     }
 
     /**
@@ -144,4 +146,24 @@ public class Player
         System.out.println(currentRoom.getLongDescription());     
 
     }
+    public void usarPiedra(){
+    int index = 0;    
+    int i = 0;
+    boolean encontrado = false;
+    while(index < equipo.size() && !encontrado){
+        if(currentRoom  != null){
+              piedraHogar.registrarHogar(currentRoom);
+              recorrido.push(currentRoom);
+              piedraHogar.regresar(i);
+              
+        }
+        else{
+        
+            System.out.println("No se puede registrar hogar");
+        }
+        
+    }
+    
+    }
+    
 }

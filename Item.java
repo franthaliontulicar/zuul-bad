@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class Item here.
  * 
@@ -11,6 +11,7 @@ public class Item
     private float peso;
     private String descripcion;
     private boolean portable;
+    private ArrayList<Room> hogar;
     /**
      * Constructor for objects of class Item
      */
@@ -20,6 +21,7 @@ public class Item
         peso = pesoItem;
         descripcion = descripcionItem;
         portable = portar;
+        hogar = new ArrayList<>();
     }
 
     /**
@@ -42,5 +44,11 @@ public class Item
         return portable;
     }
    
+    public void registrarHogar(Room posada){
+        hogar.add(posada);
+    }
+    public void regresar(int index){
+        hogar.get(index);
+    }
     
 }
